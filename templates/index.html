@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <header>
+    <div class="logo">
+      <span class="logo-icon">₹</span>
+      <span class="logo-text">SPNDX</span>
+    </div>
+    <p class="tagline">Track every rupee.</p>
+  </header>
+
+  <main>
+
+    <!-- Summary Cards -->
+    <section class="summary-row">
+      <div class="card card--total">
+        <div class="card-label">Total Spent</div>
+        <div class="card-value" id="totalAmount">₹0.00</div>
+      </div>
+      <div class="card card--count">
+        <div class="card-label">Transactions</div>
+        <div class="card-value" id="totalCount">0</div>
+      </div>
+      <div class="card card--top">
+        <div class="card-label">Top Category</div>
+        <div class="card-value" id="topCategory">—</div>
+      </div>
+    </section>
+
+    <div class="content-grid">
+
+      <!-- Add Expense Form -->
+      <section class="panel panel--form">
+        <h2 class="panel-title">Add Expense</h2>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="title" placeholder="e.g. Lunch at Arsalan" maxlength="60"/>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Amount (₹)</label>
+            <input type="number" id="amount" placeholder="0.00" min="0.01" step="0.01"/>
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="date"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <div class="category-grid" id="categoryGrid">
+            <button class="cat-btn active" data-cat="Food">🍛 Food</button>
+            <button class="cat-btn" data-cat="Transport">🚌 Transport</button>
+            <button class="cat-btn" data-cat="Shopping">🛍 Shopping</button>
+            <button class="cat-btn" data-cat="Health">💊 Health</button>
+            <button class="cat-btn" data-cat="Bills">💡 Bills</button>
+            <button class="cat-btn" data-cat="Entertainment">🎬 Entertainment</button>
+            <button class="cat-btn" data-cat="Education">📚 Education</button>
+            <button class="cat-btn" data-cat="Other">📦 Other</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Note <span class="optional">(optional)</span></label>
+          <input type="text" id="note" placeholder="Any details..." maxlength="100"/>
+        </div>
+        <button class="btn-add" id="addBtn">+ Add Expense</button>
+        <div class="form-msg" id="formMsg"></div>
+      </section>
+
+      <!-- Category Breakdown -->
+      <section class="panel panel--breakdown">
+        <h2 class="panel-title">By Category</h2>
+        <div id="categoryBreakdown" class="breakdown-list">
+          <p class="empty-state">No data yet.</p>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Expenses List -->
+    <section class="panel panel--list">
+      <div class="list-header">
+        <h2 class="panel-title">All Expenses</h2>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search..."/>
+      </div>
+      <div id="expenseList" class="expense-list">
+        <p class="empty-state">No expenses recorded yet.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Made with Flask &amp; vanilla JS &nbsp;·&nbsp; <a href="https://github.com/" target="_blank">GitHub</a></p>
+  </footer>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
