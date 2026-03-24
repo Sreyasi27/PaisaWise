@@ -15,10 +15,20 @@
 * **Dev Environment:** CodeSandbox / VS Code
 
 ## 📂 Project Structure
-* `main.py` - The core Flask application logic.
-* `templates/` - HTML files for the Login and Dashboard views.
-* `static/` - CSS and JS files for styling and interactivity.
-* `users.json` / `expenses.json` - Data storage files.
+workspace/
+├── .devcontainer/         # Environment configuration
+├── myexpense123/          # Main Application Folder
+│   ├── static/            # UI Assets
+│   │   ├── script.js      # Frontend Logic
+│   │   └── style.css      # Dark-themed styling
+│   ├── templates/         # HTML Templates
+│   │   ├── index.html     # Main Dashboard
+│   │   └── login.html     # Authentication portal
+│   ├── expenses.json      # Expense records Database
+│   └── main.py            # Flask server & Routing logic
+├── README.md              # Project Documentation
+├── requirements.txt       # Python dependency list
+└── users.json             # User credentials Database
 
 ## ⚙️ Installation & Setup
 To run this project locally, follow these steps:
