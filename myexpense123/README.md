@@ -36,8 +36,7 @@ workspace/
 ## ⚙️ Installation & Setup
 **1. Clone the repository:**
 ```bash
+
 git clone https://github.com/Sreyasi27/PaisaWise.git
 
- **Clone the repository:**
  
-   git clone https://github.com/Sreyasi27/PaisaWise.git
