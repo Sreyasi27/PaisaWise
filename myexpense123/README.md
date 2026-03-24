@@ -15,13 +15,15 @@
 * **Dev Environment:** CodeSandbox / VS Code
 
 ## 📂 Project Structure
+
+```text
 workspace/
 ├── .devcontainer/         # Environment configuration
 ├── myexpense123/          # Main Application Folder
 │   ├── static/            # UI Assets
 │   │   ├── script.js      # Frontend Logic
 │   │   └── style.css      # Dark-themed styling
-│   ├── templates/         # HTML Templates
+│   ├── templates/         # HTML Jinja2 Templates
 │   │   ├── index.html     # Main Dashboard
 │   │   └── login.html     # Authentication portal
 │   ├── expenses.json      # Expense records Database
@@ -29,7 +31,6 @@ workspace/
 ├── README.md              # Project Documentation
 ├── requirements.txt       # Python dependency list
 └── users.json             # User credentials Database
-
 ## ⚙️ Installation & Setup
 To run this project locally, follow these steps:
 
