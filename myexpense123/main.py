@@ -11,7 +11,6 @@ app.secret_key = "paisawise_secret_key_2026"
 DATA_FILE = "expenses.json"
 USERS_FILE = "users.json"
 
-# --- Data Utilities ---
 def load_json(file, default_type=list):
     if not os.path.exists(file):
         return default_type()
@@ -24,8 +23,6 @@ def load_json(file, default_type=list):
 def save_json(file, data):
     with open(file, "w") as f:
         json.dump(data, f, indent=2)
-
-# --- Auth Decorator ---
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -33,8 +30,6 @@ def login_required(f):
             return redirect(url_for("login_page"))
         return f(*args, **kwargs)
     return decorated_function
-
-# --- Auth Routes ---
 @app.route("/login")
 def login_page():
     if "user" in session:
@@ -44,7 +39,6 @@ def login_page():
 @app.route("/api/signup", methods=["POST"])
 def signup():
     data = request.get_json()
-    # Ensure we load a dictionary for users
     users = load_json(USERS_FILE, dict)
     username = data.get("username", "").strip()
     password = data.get("password")
@@ -147,5 +141,4 @@ def get_summary():
     })
 
 if __name__ == "__main__":
-    # Ensure server runs on port 5000 as seen in your screenshot
     app.run(debug=True, port=5000)
