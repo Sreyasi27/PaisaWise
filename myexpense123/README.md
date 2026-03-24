@@ -31,6 +31,7 @@ workspace/
 ├── README.md              # Project Documentation
 ├── requirements.txt       # Python dependency list
 └── users.json             # User credentials Database
+```
 
 ## ⚙️ Installation & Setup
 To run this project locally, follow these steps:
