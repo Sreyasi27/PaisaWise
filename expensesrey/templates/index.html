@@ -25,14 +25,37 @@
         </div>
         <p class="tagline">Track every rupee.</p>
       </div>
-      <button class="theme-toggle" id="themeToggle" title="Toggle theme">
-        <span class="toggle-icon">🌙</span>
-        <span class="toggle-label">Dark</span>
-      </button>
+
+      <div
+        class="header-actions"
+        style="display: flex; gap: 10px; align-items: center"
+      >
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+          <span class="toggle-icon">🌙</span>
+          <span class="toggle-label">Dark</span>
+        </button>
+
+        <a
+          href="/logout"
+          class="btn-logout"
+          style="
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: inherit;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+          "
+        >
+          Logout
+        </a>
+      </div>
     </header>
 
     <main>
-      <!-- Summary Cards -->
       <section class="summary-row">
         <div class="card card--total">
           <div class="card-label">Total Spent</div>
@@ -49,7 +72,6 @@
       </section>
 
       <div class="content-grid">
-        <!-- Add Expense Form -->
         <section class="panel panel--form">
           <h2 class="panel-title">Add Expense</h2>
           <div class="form-group">
@@ -105,7 +127,6 @@
           <div class="form-msg" id="formMsg"></div>
         </section>
 
-        <!-- Category Breakdown -->
         <section class="panel panel--breakdown">
           <h2 class="panel-title">By Category</h2>
           <div id="categoryBreakdown" class="breakdown-list">
@@ -114,7 +135,6 @@
         </section>
       </div>
 
-      <!-- Expenses List -->
       <section class="panel panel--list">
         <div class="list-header">
           <h2 class="panel-title">All Expenses</h2>

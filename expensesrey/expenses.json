@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1774095590192,
+    "title": "biriyani",
+    "amount": 350.0,
+    "category": "Food",
+    "date": "2026-03-21",
+    "note": ""
+  },
+  {
+    "id": 1774340904998,
+    "user": "srey123@gmail.com",
+    "title": "Biriyani",
+    "amount": 250.0,
+    "category": "Food",
+    "date": "2026-03-24",
+    "note": ""
+  }
+]

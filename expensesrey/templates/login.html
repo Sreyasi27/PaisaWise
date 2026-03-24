@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - PaisaWise</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <style>
+      .auth-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        position: relative;
+        z-index: 1;
+      }
+      .auth-panel {
+        width: 100%;
+        max-width: 400px;
+      }
+      .auth-toggle {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 12px;
+        cursor: pointer;
+        color: var(--accent);
+        text-decoration: underline;
+      }
+      .hidden {
+        display: none;
+      }
+      .auth-input {
+        width: 100%;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        padding: 10px 14px;
+        margin-bottom: 15px;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <div class="auth-wrapper">
+      <section class="panel auth-panel">
+        <div class="logo" style="justify-content: center; margin-bottom: 30px">
+          <span class="logo-icon">₹</span>
+          <span class="logo-text">PaisaWise</span>
+        </div>
+
+        <div id="loginBox">
+          <h2 class="panel-title">Login</h2>
+          <input
+            type="text"
+            id="lUser"
+            class="auth-input"
+            placeholder="Username"
+          />
+          <input
+            type="password"
+            id="lPass"
+            class="auth-input"
+            placeholder="Password"
+          />
+          <button class="btn-add" onclick="submitAuth('login')">Login</button>
+          <p class="auth-toggle" onclick="toggleView()">
+            Don't have an account? Sign Up
+          </p>
+        </div>
+
+        <div id="signupBox" class="hidden">
+          <h2 class="panel-title">Create Account</h2>
+          <input
+            type="text"
+            id="sUser"
+            class="auth-input"
+            placeholder="Choose Username"
+          />
+          <input
+            type="password"
+            id="sPass"
+            class="auth-input"
+            placeholder="Choose Password"
+          />
+          <button class="btn-add" onclick="submitAuth('signup')">
+            Create Account
+          </button>
+          <p class="auth-toggle" onclick="toggleView()">
+            Already a member? Login
+          </p>
+        </div>
+
+        <div id="authMsg" class="form-msg"></div>
+      </section>
+    </div>
+
+    <script>
+      function toggleView() {
+        document.getElementById("loginBox").classList.toggle("hidden");
+        document.getElementById("signupBox").classList.toggle("hidden");
+        document.getElementById("authMsg").textContent = "";
+      }
+
+      async function submitAuth(type) {
+        const user = document.getElementById(
+          type === "login" ? "lUser" : "sUser"
+        ).value;
+        const pass = document.getElementById(
+          type === "login" ? "lPass" : "sPass"
+        ).value;
+
+        if (!user || !pass) {
+          const msg = document.getElementById("authMsg");
+          msg.textContent = "Please fill all fields";
+          msg.className = "form-msg error";
+          return;
+        }
+
+        try {
+          const res = await fetch(`/api/${type}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username: user, password: pass }),
+          });
+          const data = await res.json();
+
+          if (res.ok) {
+            if (type === "login") window.location.href = "/";
+            else {
+              alert("Account created! You can now login.");
+              toggleView();
+            }
+          } else {
+            const msg = document.getElementById("authMsg");
+            msg.textContent = data.error;
+            msg.className = "form-msg error";
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    </script>
+  </body>
+</html>
